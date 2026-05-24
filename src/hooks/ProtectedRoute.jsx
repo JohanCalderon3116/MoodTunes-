@@ -43,8 +43,12 @@ export const ProtectedRoute = ({
   }
 
   if (unauthenticatedOnly) {
+    const authenticatedPath = user?.onboarding_completed
+      ? authenticatedRedirectTo
+      : onboardingPath
+
     return isAuthenticated ? (
-      <Navigate to={authenticatedRedirectTo} replace />
+      <Navigate to={authenticatedPath} replace />
     ) : (
       children
     )

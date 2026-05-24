@@ -5,14 +5,11 @@ import {
   AuthContextProvider,
   GlobalStyles,
   Myroutes,
-  darkTheme,
-  lightTheme,
   useThemeStore,
 } from './index'
 
 const App = () => {
-  const themeMode = useThemeStore((state) => state.themeMode)
-  const activeTheme = themeMode === 'light' ? lightTheme : darkTheme
+  const activeTheme = useThemeStore((state) => state.currentTheme)
 
   return (
     <ThemeProvider theme={activeTheme}>

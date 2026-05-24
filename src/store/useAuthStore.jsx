@@ -16,7 +16,7 @@ const getRedirectTo = () => {
     return undefined
   }
 
-  return window.location.origin
+  return `${window.location.origin}/auth/callback`
 }
 
 export const useAuthStore = create((set, get) => ({
@@ -52,22 +52,6 @@ export const useAuthStore = create((set, get) => ({
       loading: false,
       authError: null,
     })
-  },
-
-  loginWithGoogle: async () => {
-    const supabaseClient = getSupabaseClient()
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: getRedirectTo(),
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent',
-        },
-      },
-    })
-
-    if (error) throw new Error(error.message)
   },
 
   loginWithSpotify: async () => {

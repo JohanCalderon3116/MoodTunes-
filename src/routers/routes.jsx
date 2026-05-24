@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from '../hooks/ProtectedRoute'
+import { AuthCallback } from '../pages/AuthCallback'
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
 import { Onboarding } from '../pages/Onboarding'
@@ -7,6 +8,7 @@ import { Onboarding } from '../pages/Onboarding'
 export const Myroutes = () => {
   return (
     <Routes>
+      <Route path="/auth/callback" element={<AuthCallback />} />
       <Route
         path="/login"
         element={
